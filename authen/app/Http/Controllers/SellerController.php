@@ -3,31 +3,30 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Model\AdminModel;
+use App\Model\SellerModel;
 
-class AdminController extends Controller
+class SellerController extends Controller
 {
     //Hàm khởi tạo của class
     //Hàm này sẽ luôn chạy trước các hàm khác trong class
-    //AdminController constructor
+    //SellerController constructor
     public function __construct(){
-        $this->middleware('auth:admin')->only('index','store');
+        $this->middleware('auth:seller')->only('index','store');
     }
     /*
-     * Phương thức trả về view khi đăng ký tài khoản admin thành công
+     * Phương thức trả về view khi đăng ký tài khoản seller thành công
      * @return\Illuminate\Contract\View\Factory\Illuminate\View\View
      * */
     public function index(){
-        return view('admin.dashboard');
+        return view('seller.dashboard');
     }
     /*
-     * Phương thức trả về view khi đăng ký tài khoản admin
+     * Phương thức trả về view khi đăng ký tài khoản seller
      * @return\Illuminate\Contract\View\Factory\Illuminate\View\View
      * */
     public function create(){
-        return view('admin.auth.register');
+        return view('seller.auth.register');
     }
-
     public function store(Requets $requets){
 
         //validate dữ liệu được gửi từ form đi
@@ -37,12 +36,12 @@ class AdminController extends Controller
             'password'=> 'required'
         ));
         //Khởi tạo đẻ lưu admin mới
-        $adminModel = new AdminModel();
-        $adminModel->name = $requets->name;
-        $adminModel->email = $requets->email;
-        $adminModel->password = bcrypt($requets->password);
-        $adminModel->save();
+        $sellerModel = new SellerModel();
+        $sellerModel->name = $requets->name;
+        $sellerModel->email = $requets->email;
+        $sellerModel->password = bcrypt($requets->password);
+        $sellerModel->save();
 
-        return redirect()->route('admin.auth.login');
+        return redirect()->route('seller.auth.login');
     }
 }
