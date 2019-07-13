@@ -11,7 +11,7 @@ class SellerController extends Controller
     //Hàm này sẽ luôn chạy trước các hàm khác trong class
     //SellerController constructor
     public function __construct(){
-        $this->middleware('auth:seller')->only('index','store');
+        $this->middleware('auth:seller')->only('index');
     }
     /*
      * Phương thức trả về view khi đăng ký tài khoản seller thành công

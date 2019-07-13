@@ -58,6 +58,49 @@ Route::prefix('admin')->group(function (){
      * Route dùng để đăng xuất
      * */
     Route::post('logout' , 'Auth\Admin\LoginController@logout')->name('admin.auth.logout');
+
+    Route::get('shop/category' , function (){
+        return view('admin.content.shop.category.index');
+    });
+    Route::get('shop/product' , function (){
+        return view('admin.content.shop.product.index');
+    });
+    Route::get('shop/customer' , function (){
+        return view('admin.content.shop.customer.index');
+    });
+    Route::get('shop/order' , function (){
+        return view('admin.content.shop.order.index');
+    });
+    Route::get('shop/review' , function (){
+        return view('admin.content.shop.review.index');
+    });
+    Route::get('shop/statistic' , function (){
+        return view('admin.content.shop.statistic.index');
+    });
+    Route::get('shop/brand' , function (){
+        return view('admin.content.shop.brand.index');
+    });
+    Route::get('shop/product/order' , function (){
+        return view('admin.content.shop.adminorder.index');
+    });
+
+
+    Route::get('content/category' , function (){
+        return view('admin.content.content.category.index');
+    });
+    Route::get('content/post' , function (){
+        return view('admin.content.content.post.index');
+    });
+    Route::get('content/page' , function (){
+        return view('admin.content.content.page.index');
+    });
+    Route::get('content/tag' , function (){
+        return view('admin.content.content.tag.index');
+    });
+
+
+
+
 });
 /*
  * Route cho các nhà cung cấp(seller)
@@ -102,5 +145,49 @@ Route::prefix('seller')->group(function (){
      * */
     Route::post('logout' , 'Auth\Seller\LoginController@logout')->name('seller.auth.logout');
 
+
+});
+/*
+ * Route cho các nhà vận chuyển(shipper)
+ * */
+
+Route::prefix('shipper')->group(function (){
+    //gom nhóm các route cho shipper
+    //URL:authen.com/shipper
+    //Route mặc định cho shipper
+
+    Route::get('/' , 'ShipperController@index')->name('shipper.dashboard');
+    //URL:authen.com/shipper/dashboard
+    //Route đăng nhập thành công
+    Route::get('/dashboard','ShipperController@index')->name('shipper.dashboard');
+    /*
+     * URL:authen.com/shipper/register
+     * Route trả về view dùng để đằng ký tài khoản shipper
+     * */
+    Route::get('/register','ShipperController@create')->name('shipper.register');
+    /*
+     *URL:authen/shipper/register
+     * Phương thức là POST
+     * Route dùng để đăng ký 1 shipper từ form POST
+     * */
+    Route::post('register' , 'ShipperController@store')->name('shipper.register.store');
+    /*
+    * Route sẽ trả về view dăng nhập seller
+    *URL:authen/shipper/login
+    * METHOD:GET
+    * */
+    Route::get('login','Auth\Shipper\ShipperController@login')->name('shipper.auth.login');
+
+    /*Route xử lý quá trình đăng nhập shipper
+     * authen/shipper/login
+     * METHOD:POST
+     * URL:authen/shipper/logout
+     * */
+    Route::post('login' , 'Auth\Shipper\LoginController@loginSeller')->name('shipper.auth.loginShipper');
+    /*
+    * METHOD:POST
+    * Route dùng để đăng xuất
+    * */
+    Route::post('logout' , 'Auth\Shipper\LoginController@logout')->name('shipper.auth.logout');
 });
 

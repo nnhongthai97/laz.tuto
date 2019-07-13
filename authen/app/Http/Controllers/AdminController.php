@@ -11,7 +11,7 @@ class AdminController extends Controller
     //Hàm này sẽ luôn chạy trước các hàm khác trong class
     //AdminController constructor
     public function __construct(){
-        $this->middleware('auth:admin')->only('index','store');
+        $this->middleware('auth:admin')->only('index');
     }
     /*
      * Phương thức trả về view khi đăng ký tài khoản admin thành công

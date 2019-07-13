@@ -60,6 +60,14 @@ return [
                 'driver' => 'token',
                 'provider' => 'sellers',
             ],
+            'shipper'=>[
+                'driver' => 'session',
+                'provider' => 'shippers',
+            ],
+            'shipper-api' => [
+                'driver' => 'token',
+                'provider' => 'shippers',
+            ],
         ],
     ],
 
@@ -93,6 +101,10 @@ return [
         'sellers' => [
             'driver' => 'eloquent',
             'model' => App\Model\SellerModel::class,
+        ],
+        'shippers' => [
+            'driver' => 'eloquent',
+            'model' => App\Model\ShipperModel::class,
         ],
         // 'users' => [
         //     'driver' => 'database',
@@ -128,6 +140,11 @@ return [
         ],
         'sellers' => [
             'provider' => 'sellers',
+            'table' => 'password_resets',
+            'expire' => 15,
+        ],
+        'shippers' => [
+            'provider' => 'shippers',
             'table' => 'password_resets',
             'expire' => 15,
         ],
