@@ -98,6 +98,44 @@ Route::prefix('admin')->group(function (){
         return view('admin.content.content.tag.index');
     });
 
+    //quản trị nội dung admin menu
+    Route::get('/menu' , function (){
+        return view('admin.content.menu.index');
+    });
+    Route::get('/menuitems' , function (){
+        return view('admin.content.menuitems.index');
+    });
+
+    //quản lý admin user
+    Route::get('/users' , function (){
+        return view('admin.content.users.index');
+    });
+    Route::get('/media' , function (){
+        return view('admin.content.media.index');
+    });
+    Route::get('/config' , function (){
+        return view('admin.content.config.index');
+    });
+    Route::get('/newletters' , function (){
+        return view('admin.content.newletters.index');
+    });
+    Route::get('/contacts' , function (){
+        return view('admin.content.contacts.index');
+    });
+    Route::get('/banners' , function (){
+        return view('admin.content.banners.index');
+    });
+    //email
+    Route::get('email/inbox' , function (){
+        return view('admin.email.index');
+    });
+    Route::get('email/draf' , function (){
+        return view('admin.email.draf');
+    });
+    Route::get('email/send' , function (){
+        return view('admin.email.send');
+    });
+
 
 
 

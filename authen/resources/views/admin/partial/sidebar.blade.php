@@ -112,6 +112,16 @@
                             <li><a href="{{url('/admin/newletters')}}"><i class="fa fa-angle-right">Newletters</i></a></li>
                         </ul>
                     </li>
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-laptop"></i>
+                            <span>Bannners</span>
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="{{url('/admin/banners')}}"><i class="fa fa-angle-right">Banner</i></a></li>
+                        </ul>
+                    </li>
 
                     <li class="treeview">
                         <a href="#">
