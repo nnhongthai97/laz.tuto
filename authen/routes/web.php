@@ -21,7 +21,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 /*
  * route cho administrator
  */
-Route::prefix('admin')->group(function (){
+Route::prefix('admin')->group(function(){
     //gom nhóm các route cho admin
     //URL:authen.com/admin
     //Route mặc định
