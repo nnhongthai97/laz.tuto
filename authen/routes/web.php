@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('frontend.homepages.index');
 });
 
 Auth::routes();
@@ -59,9 +59,17 @@ Route::prefix('admin')->group(function(){
      * */
     Route::post('logout' , 'Auth\Admin\LoginController@logout')->name('admin.auth.logout');
 
-    Route::get('shop/category' , function (){
-        return view('admin.content.shop.category.index');
-    });
+    Route::get('shop/category' ,'Admin\ShopCategoryController@index');
+    Route::get('shop/category/create','Admin\ShopCategoryController@create');
+    Route::get('shop/category/{id}/edit','Admin\ShopCategoryController@edit');
+    Route::get('shop/category/{id}/delete','Admin\ShopCategoryController@delete');
+
+    Route::post('shop/category/','Admin\ShopCategoryController@store');
+    Route::post('shop/category/{id}','Admin\ShopCategoryController@update');
+    Route::post('shop/category/{id}','Admin\ShopCategoryController@destroy');
+
+
+
     Route::get('shop/product' , function (){
         return view('admin.content.shop.product.index');
     });
@@ -82,6 +90,9 @@ Route::prefix('admin')->group(function(){
     });
     Route::get('shop/product/order' , function (){
         return view('admin.content.shop.adminorder.index');
+    });
+    Route::get('shop/product/order' , function (){
+        return view('admin.content.shop.category.index');
     });
 
 
@@ -214,14 +225,14 @@ Route::prefix('shipper')->group(function (){
     *URL:authen/shipper/login
     * METHOD:GET
     * */
-    Route::get('login','Auth\Shipper\ShipperController@login')->name('shipper.auth.login');
+    Route::get('login','Auth\Shipper\LoginController@login')->name('shipper.auth.login');
 
     /*Route xử lý quá trình đăng nhập shipper
      * authen/shipper/login
      * METHOD:POST
      * URL:authen/shipper/logout
      * */
-    Route::post('login' , 'Auth\Shipper\LoginController@loginSeller')->name('shipper.auth.loginShipper');
+    Route::post('login' , 'Auth\Shipper\LoginController@loginShipper')->name('shipper.auth.loginShipper');
     /*
     * METHOD:POST
     * Route dùng để đăng xuất

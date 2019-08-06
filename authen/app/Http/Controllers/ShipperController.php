@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Model\ShipperModel;
+use App\Http\Controllers\Controller;
 
 class ShipperController extends Controller
 {
@@ -11,7 +12,7 @@ class ShipperController extends Controller
     //Hàm này sẽ luôn chạy trước các hàm khác trong class
     //ShipperController constructor
     public function __construct(){
-        $this->middleware('auth:shipper')->only('index');
+        $this-> middleware('auth:shipper')->only('index');
     }
     /*
     * Phương thức trả về view khi đăng ký tài khoản seller thành công

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Model\SellerModel;
 
+
 class SellerController extends Controller
 {
     //Hàm khởi tạo của class
