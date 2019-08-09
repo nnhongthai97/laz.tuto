@@ -57,6 +57,11 @@ Route::prefix('admin')->group(function(){
      * METHOD:POST
      * Route dùng để đăng xuất
      * */
+
+    /*
+     * Route admin shopping
+     * */
+
     Route::post('logout' , 'Auth\Admin\LoginController@logout')->name('admin.auth.logout');
 
     Route::get('shop/category' ,'Admin\ShopCategoryController@index');
@@ -68,11 +73,21 @@ Route::prefix('admin')->group(function(){
     Route::post('shop/category/{id}','Admin\ShopCategoryController@update');
     Route::post('shop/category/{id}','Admin\ShopCategoryController@destroy');
 
+    /*
+     * Route admin shopping product
+     * */
+    Route::get('shop/product' ,'Admin\ShopProductController@index');
+    Route::get('shop/product/create','Admin\ShopProductController@create');
+    Route::get('shop/product/{id}/edit','Admin\ShopProductController@edit');
+    Route::get('shop/product/{id}/delete','Admin\ShopProductController@delete');
+
+    Route::post('shop/product/','Admin\ShopProductController@store');
+    Route::post('shop/product/{id}','Admin\ShopProductController@update');
+    Route::post('shop/product/{id}','Admin\ShopProductController@destroy');
 
 
-    Route::get('shop/product' , function (){
-        return view('admin.content.shop.product.index');
-    });
+
+
     Route::get('shop/customer' , function (){
         return view('admin.content.shop.customer.index');
     });

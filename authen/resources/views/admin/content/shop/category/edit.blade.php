@@ -1,13 +1,13 @@
 @extends('admin.layouts.glance')
 @section('title')
-    Sửa danh mục
+    Sửa sản phẩm
 @endsection
 @section('content')
-    <h1>Sửa danh mục {{$cat->id.':'.$cat->name}}</h1>
+    <h1>Sửa sản phẩm {{$cat->id.':'.$cat->name}}</h1>
 
     <div class="row">
         <div class="form-three widget-shadow">
-            <form name="category" action="{{url('admin/shop/category/'.$cat->id)}}" method="post" class="form-horizontal">
+            <form name="category" action="{{url('admin/shop/product/'.$cat->id)}}" method="post" class="form-horizontal">
                 @csrf
                 <div class="form-group">
                     <label for="focusedinput" class="col-sm-2 control-label">Tên danh mục</label>

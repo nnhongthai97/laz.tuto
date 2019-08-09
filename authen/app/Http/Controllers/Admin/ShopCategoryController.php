@@ -14,7 +14,7 @@ class ShopCategoryController extends Controller
 
         $items = DB::table('shop_category')->paginate(10);
         /*
-         * Đây là truyền biến từ controller xuống views
+         * Đây là phương thức index
          * */
         $data = array();
         $data['cats'] = $items;
@@ -22,15 +22,14 @@ class ShopCategoryController extends Controller
     }
     public function create(){
         /*
-         * Đây là truyền biến từ controller xuống views
+         * Đây là đây là phương thức create
          * */
         $data = array();
-
         return view('admin.content.shop.category.submit',$data);
     }
     public function edit($id){
         /*
-         * Đây là truyền biến từ controller xuống views
+         * Đây là phương thức edit
          * */
         $data = array();
         $iteam = ShopCategoryModel::find($id);
@@ -40,10 +39,10 @@ class ShopCategoryController extends Controller
     }
     public function delete($id){
         /*
-         * Đây là truyền biến từ controller xuống views
+         * Đây là phương thức delete
          * */
         $data = array();
-       
+
         $iteam = ShopCategoryModel::find($id);
         $data['cat'] = $iteam;
         return view('admin.content.shop.category.delete',$data);
