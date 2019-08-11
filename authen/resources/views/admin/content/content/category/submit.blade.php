@@ -1,9 +1,9 @@
 @extends('admin.layouts.glance')
 @section('title')
-    Thêm mới danh mục sản phẩm
+    Quản trị trang
 @endsection
 @section('content')
-    <h1>Thêm mới danh mục sản phẩm</h1>
+    <h1>Quản trị trang</h1>
 
     <div class="row">
         <div class="form-three widget-shadow">
@@ -18,7 +18,7 @@
                 </div>
             @endif
 
-            <form name="category" action="{{url('admin/shop/category')}}" method="post" class="form-horizontal">
+            <form name="category" action="{{url('admin/content/category')}}" method="post" class="form-horizontal">
                 @csrf
                 <div class="form-group">
                     <label for="focusedinput" class="col-sm-2 control-label">Tên danh mục</label>
@@ -54,5 +54,4 @@
             </form>
         </div>
     </div>
-
 @endsection

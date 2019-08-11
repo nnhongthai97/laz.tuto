@@ -18,51 +18,87 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
 /*
  * route cho administrator
  */
+
 Route::prefix('admin')->group(function(){
-    //gom nhóm các route cho admin
-    //URL:authen.com/admin
-    //Route mặc định
-    Route::get('/' , 'AdminController@index')->name('admin.dashboard');
-    //URL:authen.com/admin/dashboard
-    //Route đăng nhập thành công
-    Route::get('/dashboard','AdminController@index')->name('admin.dashboard');
+
+    //GOM NHÓM ROUTE CHO ADMIN
+
     /*
+     *
+     *ROUTE ADMIN AUTHENTICATION
+     *
+     * */
+
+    /*
+     * URL:authen.com/admin
+     * ROUTE mặc định cho admin
+     *
+     * */
+
+    Route::get('/' , 'AdminController@index')->name('admin.dashboard');
+
+    /*
+     *
+     *  URL:authen.com/admin/dashboard
+     *  Route đăng nhập thành công
+     *
+     * */
+
+    Route::get('/dashboard','AdminController@index')->name('admin.dashboard');
+
+    /*
+     *
      * URL:authen.com/admin/register
      * Route trả về view dùng để đằng ký tài khoản admin
+     *
      * */
     Route::get('/register','AdminController@create')->name('admin.register');
+
     /*
+     *
      *URL:authen/admin/register
      * Phương thức là POST
      * Route dùng để đăng ký 1 admin từ form POST
+     *
      * */
     Route::post('register' , 'AdminController@store')->name('admin.register.store');
+
     /*
      * Route sẽ trả về view dăng nhập admin
-     *URL:authen/admin/login
+     * URL:authen/admin/login
      * METHOD:GET
+     *
      * */
+
     Route::get('login','Auth\Admin\LoginController@login')->name('admin.auth.login');
 
-    /*Route xử lý quá trình đăng nhập admin
+    /*
+     * Route xử lý quá trình đăng nhập admin
      * authen/admin/login
      * METHOD:POST
      * URL:authen/admin/logout
+     *
      * */
+
     Route::post('login' , 'Auth\Admin\LoginController@loginAdmin')->name('admin.auth.loginAdmin');
+
     /*
      * METHOD:POST
      * Route dùng để đăng xuất
      * */
 
-    /*
-     * Route admin shopping
-     * */
 
     Route::post('logout' , 'Auth\Admin\LoginController@logout')->name('admin.auth.logout');
+
+    /*
+     *
+     * ROUTE ADMIN SHOPPING
+     *
+     * */
 
     Route::get('shop/category' ,'Admin\ShopCategoryController@index');
     Route::get('shop/category/create','Admin\ShopCategoryController@create');
@@ -74,7 +110,9 @@ Route::prefix('admin')->group(function(){
     Route::post('shop/category/{id}','Admin\ShopCategoryController@destroy');
 
     /*
-     * Route admin shopping product
+     *
+     * ROUTE ADMIN SHOPPING PRODUCT
+     *
      * */
     Route::get('shop/product' ,'Admin\ShopProductController@index');
     Route::get('shop/product/create','Admin\ShopProductController@create');
@@ -91,40 +129,80 @@ Route::prefix('admin')->group(function(){
     Route::get('shop/customer' , function (){
         return view('admin.content.shop.customer.index');
     });
+
     Route::get('shop/order' , function (){
         return view('admin.content.shop.order.index');
     });
+
     Route::get('shop/review' , function (){
         return view('admin.content.shop.review.index');
     });
+
     Route::get('shop/statistic' , function (){
         return view('admin.content.shop.statistic.index');
     });
+
     Route::get('shop/brand' , function (){
         return view('admin.content.shop.brand.index');
     });
+
     Route::get('shop/product/order' , function (){
         return view('admin.content.shop.adminorder.index');
     });
+
     Route::get('shop/product/order' , function (){
         return view('admin.content.shop.category.index');
     });
 
+    /*
+     *
+     * ROUTE ADMIN NỘI DUNG
+     *
+     * */
 
-    Route::get('content/category' , function (){
-        return view('admin.content.content.category.index');
-    });
-    Route::get('content/post' , function (){
-        return view('admin.content.content.post.index');
-    });
+    Route::get('content/category' ,'Admin\ContentCategoryController@index');
+    Route::get('content/category/create','Admin\ContentCategoryController@create');
+    Route::get('content/category/{id}/edit','Admin\ContentCategoryController@edit');
+    Route::get('content/category/{id}/delete','Admin\ContentCategoryController@delete');
+
+    Route::post('content/category/','Admin\ContentCategoryController@store');
+    Route::post('content/category/{id}','Admin\ContentCategoryController@update');
+    Route::post('content/category/{id}','Admin\ContentCategoryController@destroy');
+
+    /*
+     * CONTENT POST
+     * */
+
+    Route::get('content/post' ,'Admin\ContentPostController@index');
+    Route::get('content/post/create','Admin\ContentPostController@create');
+    Route::get('content/post/{id}/edit','Admin\ContentPostController@edit');
+    Route::get('content/post/{id}/delete','Admin\ContentPostController@delete');
+
+    Route::post('content/post/','Admin\ShopProductController@store');
+    Route::post('content/post/{id}','Admin\ShopProductController@update');
+    Route::post('content/post/{id}','Admin\ShopProductController@destroy');
+
+    /*
+    * CONTENT PAGE
+    * */
+
     Route::get('content/page' , function (){
         return view('admin.content.content.page.index');
     });
+
+    /*
+    * CONTENT TAG
+    * */
+
     Route::get('content/tag' , function (){
         return view('admin.content.content.tag.index');
     });
 
-    //quản trị nội dung admin menu
+    /*
+     *
+     * ROUTE ADMIN MENU
+     *
+     * */
     Route::get('/menu' , function (){
         return view('admin.content.menu.index');
     });
@@ -133,6 +211,7 @@ Route::prefix('admin')->group(function(){
     });
 
     //quản lý admin user
+
     Route::get('/users' , function (){
         return view('admin.content.users.index');
     });

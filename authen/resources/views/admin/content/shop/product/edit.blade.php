@@ -7,6 +7,17 @@
 
     <div class="row">
         <div class="form-three widget-shadow">
+
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
             <form name="product" action="{{url('admin/shop/product/'.$product->id)}}" method="post" class="form-horizontal">
                 @csrf
                 <div class="form-group">

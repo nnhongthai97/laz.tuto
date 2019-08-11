@@ -2,52 +2,33 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Model\Admin\ContentCategoryModel;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Model\Admin\ShopCategoryModel;
 use Illuminate\Support\Facades\DB;
 
-class ShopCategoryController extends Controller
+class ContentCategoryController extends Controller
 {
     //
     public function index(){
 
-        $items = DB::table('shop_category')->paginate(10);
+        $items = DB::table('content_category')->paginate(10);
         /*
          * Đây là phương thức index
          * */
         $data = array();
         $data['cats'] = $items;
-        return view('admin.content.shop.category.index',$data);
+        return view('admin.content.content.category.index',$data);
     }
+
     public function create(){
         /*
          * Đây là đây là phương thức create
          * */
         $data = array();
-        return view('admin.content.shop.category.submit',$data);
+        return view('admin.content.content.category.submit',$data);
     }
-    public function edit($id){
-        /*
-         * Đây là phương thức edit
-         * */
-        $data = array();
-        $iteam = ShopCategoryModel::find($id);
-        $data['cat'] = $iteam;
-        return view('admin.content.shop.category.edit',$data);
 
-    }
-    public function delete($id){
-        /*
-         * Đây là phương thức delete
-         * */
-        $data = array();
-
-        $iteam = ShopCategoryModel::find($id);
-        $data['cat'] = $iteam;
-        return view('admin.content.shop.category.delete',$data);
-
-    }
     public function store(Request $request){
 
         $validatedData = $request->validate([
@@ -59,7 +40,7 @@ class ShopCategoryController extends Controller
         ]);
 
         $input = $request->all();
-        $item = new ShopCategoryModel();
+        $item = new ContentCategoryModel();
 
         $item->name = $input['name'];
         $item->slug = $input['slug'];
@@ -67,7 +48,17 @@ class ShopCategoryController extends Controller
         $item->intro = $input['intro'];
         $item->desc = $input['desc'];
         $item->save();
-        return redirect('/admin/shop/category');
+        return redirect('/admin/category/category');
+
+    }
+    public function edit($id){
+        /*
+         * Đây là phương thức edit
+         * */
+        $data = array();
+        $iteam = ContentCategoryModel::find($id);
+        $data['cat'] = $iteam;
+        return view('admin.content.content.category.edit',$data);
 
     }
     public function update(Request $request ,$id){
@@ -81,7 +72,7 @@ class ShopCategoryController extends Controller
 
         $input = $request->all();
 
-        $item = ShopCategoryModel::find($id);
+        $item = ContentCategoryModel::find($id);
 
         $item->name = $input['name'];
         $item->slug = $input['slug'];
@@ -89,12 +80,23 @@ class ShopCategoryController extends Controller
         $item->intro = $input['intro'];
         $item->desc = $input['desc'];
         $item->save();
-        return redirect('/admin/shop/category');
+        return redirect('/admin/content/category');
 
     }
     public function destroy($id) {
-        $item = ShopCategoryModel::find($id);
+        $item = ContentCategoryModel::find($id);
         $item->delete();
-        return redirect('/admin/shop/category');
+        return redirect('/admin/content/category');
+    }
+    public function delete($id){
+        /*
+         * Đây là phương thức delete
+         * */
+        $data = array();
+
+        $iteam = ContentCategoryModel::find($id);
+        $data['cat'] = $iteam;
+        return view('admin.content.content.category.delete',$data);
+
     }
 }

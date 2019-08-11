@@ -64,8 +64,18 @@ class ShopProductController extends Controller
         /*
          * Đây là phương thức store
          * */
-        $input = $request->all();
+        $validatedData = $request->validate([
+            'title' => 'required|max:255',
+            'slug' => 'required',
+            'images' => 'required',
+            'priceCore' => 'required|numeric',
+            'priceSale' => 'required|numeric',
+            'stock' => 'required',
+            'intro' => 'required',
+            'desc' => 'required',
+        ]);
 
+        $input = $request->all();
         $item = new ShopProductModel();
 
         $item->name = $input['name'];
@@ -84,8 +94,19 @@ class ShopProductController extends Controller
     }
 
     public function update(Request $request ,$id){
-        $input = $request->all();
 
+        $validatedData = $request->validate([
+            'title' => 'required|max:255',
+            'slug' => 'required',
+            'images' => 'required',
+            'priceCore' => 'required|numeric',
+            'priceSale' => 'required|numeric',
+            'stock' => 'required',
+            'intro' => 'required',
+            'desc' => 'required',
+        ]);
+
+        $input = $request->all();
         $item = ShopProductModel::find($id);
 
         $item->name = $input['name'];

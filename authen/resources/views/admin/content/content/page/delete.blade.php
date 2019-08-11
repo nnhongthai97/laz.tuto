@@ -1,13 +1,13 @@
 @extends('admin.layouts.glance')
 @section('title')
-    Xóa sản phẩm
+    Danh mục nội dung
 @endsection
 @section('content')
-    <h1>Xóa sản phẩm {{$product->id.':'.$product->name}}</h1>
+    <h1> Xóa trang {{ $page->id . ' : ' .$page->name }}</h1>
 
     <div class="row">
         <div class="form-three widget-shadow">
-            <form name="product" action="{{url('admin/shop/product/'.$product->id.'/delete')}}" method="post" class="form-horizontal">
+            <form name="page" action="{{ url('admin/content/page/'.$page->id.'/delete') }}" method="post" class="form-horizontal">
                 @csrf
 
                 <div class="col-sm-offset-2">
