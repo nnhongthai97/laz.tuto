@@ -83,6 +83,12 @@
       <path value="$PROJECT_DIR$/authen/vendor/phpunit/php-token-stream" />
       <path value="$PROJECT_DIR$/authen/vendor/phpunit/php-code-coverage" />
       <path value="$PROJECT_DIR$/authen/vendor/egulias/email-validator" />
+      <path value="$PROJECT_DIR$/authen/vendor/darryldecode/cart" />
+      <path value="$PROJECT_DIR$/authen/vendor/psr/http-message" />
+      <path value="$PROJECT_DIR$/authen/vendor/intervention/image" />
+      <path value="$PROJECT_DIR$/authen/vendor/guzzlehttp/psr7" />
+      <path value="$PROJECT_DIR$/authen/vendor/ralouphie/getallheaders" />
+      <path value="$PROJECT_DIR$/authen/vendor/unisharp/laravel-filemanager" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.1" />
