@@ -1,6 +1,6 @@
 @extends('admin.layouts.glance')
 @section('title')
-    Quản trị trang
+    Danh mục nội dung
 @endsection
 @section('content')
     <h1> Thêm mới trang </h1>
@@ -69,5 +69,4 @@
             $('.lfm-btn').filemanager('image', {'prefix':'http://localhost/lar.tuto/authen/public/laravel-filemanager'});
         });
     </script>
-
 @endsection

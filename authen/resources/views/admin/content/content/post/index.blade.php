@@ -3,7 +3,7 @@
     Quản trị bài viết
 @endsection
 @section('content')
-    <h1>Quản trị bài viết</h1>
+    <h1> Quản trị Bài viết</h1>
     <div style="margin: 20px 0">
         <a href="{{ url('admin/content/post/create') }}" class="btn btn-success">Thêm bài viết</a>
     </div>

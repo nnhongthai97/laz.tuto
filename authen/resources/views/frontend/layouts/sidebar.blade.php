@@ -6,7 +6,7 @@
 
 <body>
 <!-- header-starts -->
-@include('frontend.partial.header')
+@include('partials')
 <!-- //header-ends -->
 <div class="sub-banner my-banner2">
 </div>

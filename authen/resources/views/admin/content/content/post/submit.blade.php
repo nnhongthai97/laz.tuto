@@ -1,9 +1,10 @@
 @extends('admin.layouts.glance')
 @section('title')
-    Quản trị trang
+    Danh mục nội dung
 @endsection
 @section('content')
-    <h1>Quản trị trang</h1>
+    <h1> Thêm mới bài viết </h1>
+
     <div class="row">
         <div class="form-three widget-shadow">
 
