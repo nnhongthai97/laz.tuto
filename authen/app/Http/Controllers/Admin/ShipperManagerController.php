@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 
 class ShipperManagerController extends Controller
 {
-    //
+
     public function index() {
         $items = DB::table('shippers')->paginate(10);
         /**

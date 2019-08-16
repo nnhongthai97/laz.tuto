@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 class SellerManagerController extends Controller
 {
     //
+
     public function index() {
         $items = DB::table('sellers')->paginate(10);
         /**

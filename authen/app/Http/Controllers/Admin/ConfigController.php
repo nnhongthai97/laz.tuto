@@ -11,6 +11,10 @@ use App\Model\Admin\ConfigModel;
 class ConfigController extends Controller
 {
     //
+    public function __construct(){
+        $this->middleware('auth:admin');
+    }
+
     public function index(){
         $items = ConfigModel::all();
         $config = array();

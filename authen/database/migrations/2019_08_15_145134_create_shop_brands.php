@@ -15,7 +15,11 @@ class CreateShopBrands extends Migration
     {
         Schema::create('shop_brands', function (Blueprint $table) {
             $table->bigIncrements('id');
-
+            $table->string('name');
+            $table->string('image');
+            $table->string('link');
+            $table->text('intro');
+            $table->text('desc');
             $table->timestamps();
         });
     }
