@@ -1,9 +1,9 @@
 @extends('admin.layouts.glance')
 @section('title')
-   Quản trị menu
+    Quản trị menu
 @endsection
 @section('content')
-    <h1>Quản trị menu</h1>
+    <h1> Quản trị menu</h1>
     <div style="margin: 20px 0">
         <a href="{{ url('admin/menu/create') }}" class="btn btn-success">Thêm menu</a>
     </div>
@@ -23,9 +23,14 @@
 
                 @foreach($menus as $menu)
                     <tr>
-                        <th scope="row">{{ $tag->id }}</th>
+                        <th scope="row">{{ $menu->id }}</th>
                         <td>{{ $menu->name }}</td>
-                        <td>{{ $menu->location }}</td>
+
+                        <td>
+                            @if(isset($locations[$menu->location]))
+                                {{ $locations[$menu->location] }}
+                            @endif
+                        </td>
                         <td>
                             <a href="{{ url('admin/menu/'.$menu->id.'/edit') }}" class="btn btn-warning">Sửa</a>
                             <a href="{{ url('admin/menu/'.$menu->id.'/delete ') }}" class="btn btn-danger">Xóa</a>
@@ -37,5 +42,4 @@
             {{ $menus->links() }}
         </div>
     </div>
-
 @endsection

@@ -1,4 +1,4 @@
-@extends('admin.layouts.glance')
+ @extends('admin.layouts.glance')
 @section('title')
     Quản trị trang
 @endsection

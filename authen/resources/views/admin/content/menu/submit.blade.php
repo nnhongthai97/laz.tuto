@@ -1,6 +1,6 @@
 @extends('admin.layouts.glance')
 @section('title')
-    Quản trị trang
+    Danh mục nội dung
 @endsection
 @section('content')
     <h1> Thêm mới menu </h1>
@@ -33,6 +33,17 @@
                     </div>
                 </div>
 
+                <div class="form-group">
+                    <label for="focusedinput" class="col-sm-2 control-label">Locations</label>
+                    <div class="col-sm-8">
+                        <select name="location">
+                            <option value="0">Không hiện</option>
+                            @foreach($locations as $key_local => $location)
+                                <option value="{{ $key_local }}">{{ $location }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
 
                 <div class="form-group">
                     <label for="txtarea1" class="col-sm-2 control-label">Mô tả ngắn</label>
@@ -45,12 +56,4 @@
             </form>
         </div>
     </div>
-
-    <script src="{{ asset('/vendor/laravel-filemanager/js/lfm.js') }}"></script>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $('.lfm-btn').filemanager('image', {'prefix':'http://localhost/lar.tuto/authen/public/laravel-filemanager'});
-        });
-    </script>
-
 @endsection

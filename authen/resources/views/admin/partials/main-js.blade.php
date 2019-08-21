@@ -37,9 +37,7 @@
                 randomScalingFactor()
             ]
         }]
-
     };
-
     window.onload = function() {
         var ctx = document.getElementById("canvas").getContext("2d");
         window.myBar = new Chart(ctx, {
@@ -56,20 +54,16 @@
                 }
             }
         });
-
     };
-
     document.getElementById('randomizeData').addEventListener('click', function() {
         var zero = Math.random() < 0.2 ? true : false;
         barChartData.datasets.forEach(function(dataset) {
             dataset.data = dataset.data.map(function() {
                 return zero ? 0.0 : randomScalingFactor();
             });
-
         });
         window.myBar.update();
     });
-
     var colorNames = Object.keys(window.chartColors);
     document.getElementById('addDataset').addEventListener('click', function() {
         var colorName = colorNames[barChartData.datasets.length % colorNames.length];;
@@ -81,61 +75,49 @@
             borderWidth: 1,
             data: []
         };
-
         for (var index = 0; index < barChartData.labels.length; ++index) {
             newDataset.data.push(randomScalingFactor());
         }
-
         barChartData.datasets.push(newDataset);
         window.myBar.update();
     });
-
     document.getElementById('addData').addEventListener('click', function() {
         if (barChartData.datasets.length > 0) {
             var month = MONTHS[barChartData.labels.length % MONTHS.length];
             barChartData.labels.push(month);
-
             for (var index = 0; index < barChartData.datasets.length; ++index) {
                 //window.myBar.addData(randomScalingFactor(), index);
                 barChartData.datasets[index].data.push(randomScalingFactor());
             }
-
             window.myBar.update();
         }
     });
-
     document.getElementById('removeDataset').addEventListener('click', function() {
         barChartData.datasets.splice(0, 1);
         window.myBar.update();
     });
-
     document.getElementById('removeData').addEventListener('click', function() {
         barChartData.labels.splice(-1, 1); // remove the label first
-
         barChartData.datasets.forEach(function(dataset, datasetIndex) {
             dataset.data.pop();
         });
-
         window.myBar.update();
     });
 </script>
 <!-- new added graphs chart js-->
 
 <!-- Classie --><!-- for toggle left push menu script -->
-<script src="{{ asset('admin/js/classie.js') }}"></script>
+<script src="{{ asset('admin_assets/js/classie.js') }}"></script>
 <script>
     var menuLeft = document.getElementById( 'cbp-spmenu-s1' ),
         showLeftPush = document.getElementById( 'showLeftPush' ),
         body = document.body;
-
     showLeftPush.onclick = function() {
         classie.toggle( this, 'active' );
         classie.toggle( body, 'cbp-spmenu-push-toright' );
         classie.toggle( menuLeft, 'cbp-spmenu-open' );
         disableOther( 'showLeftPush' );
     };
-
-
     function disableOther( button ) {
         if( button !== 'showLeftPush' ) {
             classie.toggle( showLeftPush, 'disabled' );
@@ -157,7 +139,7 @@
 <!-- //side nav js -->
 
 <!-- for index page weekly sales java script -->
-<script src="{{ asset('admin/js/SimpleChart.js') }}"></script>
+<script src="{{ asset('admin_assets/js/SimpleChart.js') }}"></script>
 <script>
     var graphdata1 = {
         linecolor: "#CCA300",
@@ -378,7 +360,6 @@
             title: 'Weekly Profit',
             yaxislabel: 'Profit in $'
         });
-
         $("#Stackedbargraph").SimpleChart({
             ChartType: "Stacked",
             toolwidth: "50",
@@ -393,7 +374,6 @@
             title: 'Weekly Profit',
             yaxislabel: 'Profit in $'
         });
-
         $("#StackedHybridbargraph").SimpleChart({
             ChartType: "StackedHybrid",
             toolwidth: "50",
@@ -409,7 +389,6 @@
             yaxislabel: 'Profit in $'
         });
     });
-
 </script>
 <!-- //for index page weekly sales java script -->
 

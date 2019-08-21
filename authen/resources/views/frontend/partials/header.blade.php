@@ -1,64 +1,61 @@
-<div class="header-top-w3layouts">
-    <div class="container">
-        <div class="col-md-6 logo-w3">
-            <a href="index.html"><img src="{{ asset('frontend_assets/images/logo2.png') }}" alt=" " /><h1>FASHION<span>CLUB</span></h1></a>
-        </div>
-        <div class="col-md-6 phone-w3l">
-            <ul>
-                <li><span class="glyphicon glyphicon-earphone" aria-hidden="true"></span></li>
-                <li>+18045403380</li>
-            </ul>
-        </div>
-        <div class="clearfix"></div>
-    </div>
-</div>
-<div class="header-bottom-w3ls">
-    <div class="container">
-        <div class="col-md-7 navigation-agileits">
-            <nav class="navbar navbar-default">
-                <div class="navbar-header nav_2">
-                    <button type="button" class="navbar-toggle collapsed navbar-toggle1" data-toggle="collapse" data-target="#bs-megadropdown-tabs">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
+@extends('admin.layouts.glance')
+@section('title')
+    Danh mục nội dung
+@endsection
+@section('content')
+    <h1> Sửa menu {{ $menu->id . ' : ' .$menu->name }}</h1>
+
+    <div class="row">
+        <div class="form-three widget-shadow">
+
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
                 </div>
-                <div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
+            @endif
+
+            <form name="tag" action="{{ url('admin/menu/'.$menu->id) }}" method="post" class="form-horizontal">
+                @csrf
+                <div class="form-group">
+                    <label for="focusedinput" class="col-sm-2 control-label">Tên</label>
+                    <div class="col-sm-8">
+                        <input type="text" name="name" class="form-control1" id="focusedinput" value="{{ $menu->name }}" placeholder="Default Input">
+                    </div>
                 </div>
-            </nav>
-        </div>
-        <script>
-            $(document).ready(function(){
-                $(".dropdown").hover(
-                    function() {
-                        $('.dropdown-menu', this).stop( true, true ).slideDown("fast");
-                        $(this).toggleClass('open');
-                    },
-                    function() {
-                        $('.dropdown-menu', this).stop( true, true ).slideUp("fast");
-                        $(this).toggleClass('open');
-                    }
-                );
-            });
-        </script>
-        <div class="col-md-4 search-agileinfo">
-            <form action="#" method="post">
-                <input type="search" name="Search" placeholder="Search for a Product..." required="">
-                <button type="submit" class="btn btn-default search" aria-label="Left Align">
-                    <i class="fa fa-search" aria-hidden="true"> </i>
-                </button>
+
+                <div class="form-group">
+                    <label for="focusedinput" class="col-sm-2 control-label">Slug</label>
+                    <div class="col-sm-8">
+                        <input type="text" name="slug" class="form-control1" id="focusedinput" value="{{ $menu->slug }}" placeholder="Default Input">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="focusedinput" class="col-sm-2 control-label">Locations</label>
+                    <div class="col-sm-8">
+                        <select name="location">
+                            <option value="0">Không hiện</option>
+                            @foreach($locations as $key_local => $location)
+                                <?php $selected = ($key_local == $menu->location) ? ' selected' : ' ' ?>
+                                <option value="{{ $key_local }}" {{ $selected }}>{{ $location }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="txtarea1" class="col-sm-2 control-label">Mô tả</label>
+                    <div class="col-sm-8"><textarea name="desc" id="txtarea1" cols="50" rows="4" class="form-control1 mytinymce">{{ $menu->desc }}</textarea></div>
+                </div>
+
+                <div class="col-sm-offset-2">
+                    <button type="submit" class="btn btn-success">Submit</button>
+                </div>
             </form>
         </div>
-        <div class="col-md-1 cart-wthree">
-            <div class="cart">
-                <form action="#" method="post" class="last">
-                    <input type="hidden" name="cmd" value="_cart" />
-                    <input type="hidden" name="display" value="1" />
-                    <button class="w3view-cart" type="submit" name="submit" value=""><i class="fa fa-cart-arrow-down" aria-hidden="true"></i></button>
-                </form>
-            </div>
-        </div>
-        <div class="clearfix"></div>
     </div>
-</div>
+@endsection
