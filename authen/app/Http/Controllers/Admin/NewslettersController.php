@@ -4,13 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\DB;
 use App\Model\Admin\NewslettersModel;
+use Illuminate\Support\Facades\DB;
 
-class NewlettersController extends Controller
+class NewslettersController extends Controller
 {
-    //
-    //
     /**
      * Hàm khởi tạo của class được chạy ngay khi khởi tạo đổi tượng
      * Hàm này nó luôn được chạy trước các hàm khác trong class
@@ -79,4 +77,5 @@ class NewlettersController extends Controller
         $item->delete();
         return redirect('/admin/newsletters');
     }
+
 }

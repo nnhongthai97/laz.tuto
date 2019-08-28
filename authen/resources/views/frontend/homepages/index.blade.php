@@ -241,7 +241,7 @@
                     });
                 });
             </script>
-            <script type="text/javascript" src="{{ asset('frontend_assets/js') }}/jquery.flexisel.js"></script>
+            <script type="text/javascript" src="{{ asset('frontend_assets/js/') }}/jquery.flexisel.js"></script>
         </div>
     </div>
     <!-- //top-brands -->

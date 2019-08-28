@@ -159,7 +159,7 @@
 
     <script type="text/javascript">
         $(document).ready(function () {
-            var domain = "http://localhost/lar.tuto/authen/public/laravel-filemanager";
+            var domain = "http://localhost/laz.tuto/authen/public/laravel-filemanager";
             $('.lfm-btn').filemanager('image', {prefix: domain});
             $('#plus-image').on('click', function (e) {
                 e.preventDefault();
@@ -191,7 +191,7 @@
                 }
                 var box = $(this).closest('.form-group');
                 $( html ).insertBefore( box );
-                var domain = "http://localhost/lar.tuto/authen/public/laravel-filemanager";
+                var domain = "http://localhost/laz.tuto/authen/public/laravel-filemanager";
                 $('.lfm-btn').filemanager('image', {prefix: domain});
             });
             $(body).on('click', '.remove-image', function(e){
